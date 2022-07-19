@@ -19,7 +19,9 @@
 			on:click={() => {
 				criterionData.creating = false;
 				// update scores here
-				$data = updateCriteriaNames($data);
+				$data.forEach((criteriaData, i) => {
+					$data[i] = updateCriteriaNames(criteriaData);
+				});
 			}}
 		>
 			Create
@@ -28,7 +30,6 @@
 		<p>Criterion name: {criterionData.name}</p>
 		<p>Description: {criterionData.description}</p>
 		<label>
-			<!-- {criterionData.name} <input type=range disabled={!editable} bind:value={criterionData.importance} min={minImportance} max={maxImportance}>  -->
 			<input
 				type="range"
 				disabled={!editable}

@@ -1,9 +1,9 @@
 import { writable } from 'svelte/store';
 import type { CriteriaT } from './localStore.js'
+import type { DataT } from './localStore.js'
 
-// import type { DataT } from './localStore.js'
-// import { localStore } from './localStore.js'
-// import { browser } from "$app/env";
+import { localStore } from './localStore.js'
+import { browser } from "$app/env";
 
 export const myCriteria: CriteriaT = {
     "name": "Example criteria",
@@ -46,10 +46,10 @@ export const myCriteria: CriteriaT = {
         "criteriaSum": -1,
         "creating":false,
     }
-// const initialData: DataT = {
-//     0: {
-// }
+export const initialData: DataT = [
+    myCriteria
+]
 
-// export const data = browser ? localStore('rationalsubjectivedecisionmaking', initialData) : writable(initialData)
+export const data = browser ? localStore('rationalsubjectivedecisionmaking', initialData) : writable(initialData)
 // export const data = writable(initialData)
-export const data = writable(myCriteria)
+// export const data = writable(myCriteria)

@@ -1,5 +1,5 @@
 import type { ScoreT } from './localStore'
-import type { OptionT } from './localStore'
+import type { DataT } from './localStore'
 import type { CriterionT } from './localStore'
 import type { CriteriaT } from './localStore'
 
@@ -28,23 +28,6 @@ export	function updateCriteriaVariables(criteria: CriterionT[]): [number, number
 		return [criteriaSum, nCriteria, criteriaNames];
 	}
 
-export function updateCriteriaNames(criteriaData: CriteriaT): CriteriaT {
-		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(criteriaData.criteria);
-        console.log('+++++++++++++++++++++');
-        console.log(criteriaNames)
-        criteriaData.evaluations.forEach((evaluation, i) => {
-            evaluation.options.forEach((option, j) => {
-                console.log(criteriaData.evaluations[i].criteriaNames, criteriaData.evaluations[i].options[j].criteriaNames, criteriaData.evaluations[i].options[j].scores  )
-                criteriaData.evaluations[i].criteriaNames = criteriaNames
-                criteriaData.evaluations[i].options[j].criteriaNames = criteriaNames
-                criteriaData.evaluations[i].options[j].scores = updateScores(criteriaData.evaluations[i].options[j].scores, criteriaNames)
-                console.log(criteriaData.evaluations[i].criteriaNames, criteriaData.evaluations[i].options[j].criteriaNames, criteriaData.evaluations[i].options[j].scores  )
-                console.log('-------------------')
-                });
-            });
-        return criteriaData;
-        };
-
 export function updateScores(scores: ScoreT[], criteriaNames: string[]): ScoreT[] {
     // only add / delete scores 
     let newScores: ScoreT[] = [];
@@ -60,7 +43,8 @@ export function updateScores(scores: ScoreT[], criteriaNames: string[]): ScoreT[
     return newScores
 }
 
-export function computeFinalScores(criteriaData: CriteriaT): CriteriaT {
+export function computeFinalScores(data: DataT): DataT {
+    data.forEach((criteriaData: CriteriaT, i: number) => {
 		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(criteriaData.criteria);
         let importances = criteriaData.criteria.map((criterion) => (criterion.importance));
         let weights = importances.map((importance) => (importance / criteriaSum));
@@ -73,5 +57,22 @@ export function computeFinalScores(criteriaData: CriteriaT): CriteriaT {
                 criteriaData.evaluations[i].options[j].finalScore = finalScore
                 });
             });
+        data[i] = criteriaData;
+        }
+    )
+    return data
+}
+
+export function updateCriteriaNames(criteriaData: CriteriaT): CriteriaT {
+		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(criteriaData.criteria);
+        criteriaData.evaluations.forEach((evaluation, i) => {
+            evaluation.options.forEach((option, j) => {
+                criteriaData.evaluations[i].criteriaNames = criteriaNames
+                criteriaData.evaluations[i].options[j].criteriaNames = criteriaNames
+                criteriaData.evaluations[i].options[j].scores = updateScores(criteriaData.evaluations[i].options[j].scores, criteriaNames)
+                });
+            });
         return criteriaData;
         };
+
+

@@ -3,12 +3,35 @@
 	- [x] remove criterion
     - [x] disable criterion importance before creation
     - [x] correct reset scores (criteria are not deleted)
-	- multiple criteria
-	- save in localstoragebrowser
+	- [x] multiple criteria
+	- [x] save in localstoragebrowser
 	- format
+        - tailwind
+        - initial page:
+            - different criteria (name, little description)
+            - remove button on each of them
+            - add criteria button
+        - criteria page:
+            - name and description
+            - criteria
+            - edit button
+                - change name, description
+                - chage name, description of criteria
+                - add criteria, remove button on each of them
+            - evaluations and remove button on each of them
+            - add evaluation button
+        - evaluation page:
+            - name and description
+            - options and remove button
+            - add option
+            - edit button
+                - change name, description
+            - score for each option
+            - some plots
 	- serve
 	- export
 	- import
+    - prohibit name repetition
 
 # FUTURE:
 	- promote

@@ -67,6 +67,20 @@
 </script>
 
 <div class="criteria">
+	{#if criteriaData.creating}
+		<p>Criteria name: <input type="text" bind:value={criteriaData.name} /></p>
+		<p>Description: <input type="text" bind:value={criteriaData.description} /></p>
+
+		<button
+			on:click={() => {
+				criteriaData.creating = false;
+			}}
+		>
+			Finish creation
+		</button>
+	{:else}
+
+
 	<h2>Criteria {criteriaData.name}</h2>
 	<p>Description: {criteriaData.description}</p>
 	<p>Importance sum: {criteriaData.criteriaSum}</p>
@@ -93,19 +107,6 @@
 	</button>
 
 	<h3>Evaluations:</h3>
-	<!-- {#if Object.keys(criteriaData.evaluations).length > 0}
-		<select bind:value={selectedEvaluationInd}>
-			{#each criteriaData.evaluations as evaluation, i}
-				<option value={i}>{evaluation.name}</option>
-			{/each}
-		</select>
-
-		{#each criteriaData.evaluations as evaluation, i}
-			{#if i === selectedEvaluationInd}
-				<Evaluation bind:evaluationData={criteriaData.evaluations[i]} />
-			{/if}
-		{/each}
-	{/if} -->
 	{#each criteriaData.evaluations as evaluation, i}
 		<Evaluation bind:evaluationData={criteriaData.evaluations[i]} />
 	{/each}
@@ -127,6 +128,7 @@
 	>
 		Remove evaluation
 	</button>
+	{/if}
 </div>
 
 <style>

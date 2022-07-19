@@ -38,7 +38,8 @@ export type CriteriaT = {
   "creating": boolean,
 }
 
-export type DataT = {[key: number]: CriteriaT}
+// export type DataT = {[key: number]: CriteriaT}
+export type DataT = CriteriaT[]
 
 export const localStore = (key: string, initial: DataT) => {                 // receives the key of the local storage and an initial value
 
