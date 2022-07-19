@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { data } from '../stores.js';
 	import type { CriterionT } from '../localStore';
-	import { updateCriteriaNames } from '../utils';
+	import { computeFinalScores, updateCriteriaNames } from '../utils';
 	const minImportance = 1;
 	const maxImportance = 10;
 	const editable = true;
@@ -27,20 +27,18 @@
 	{:else}
 		<p>Criterion name: {criterionData.name}</p>
 		<p>Description: {criterionData.description}</p>
+		<label>
+			<!-- {criterionData.name} <input type=range disabled={!editable} bind:value={criterionData.importance} min={minImportance} max={maxImportance}>  -->
+			<input
+				type="range"
+				disabled={!editable}
+				bind:value={criterionData.importance}
+				min={minImportance}
+				max={maxImportance}
+				on:change={() => ($data = computeFinalScores($data))}
+			/>
+		</label>
 	{/if}
-
-	<label>
-		<!-- {criterionData.name} <input type=range disabled={!editable} bind:value={criterionData.importance} min={minImportance} max={maxImportance}>  -->
-		<input
-			type="range"
-			disabled={!editable}
-			bind:value={criterionData.importance}
-			min={minImportance}
-			max={maxImportance}
-		/>
-		<!-- on:change={() => {$data = updateCriteriaNames($data)}} -->
-	</label>
-	<!-- <p>{criterionData.description}</p> -->
 </div>
 
 <style>

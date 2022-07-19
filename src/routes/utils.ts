@@ -30,11 +30,16 @@ export	function updateCriteriaVariables(criteria: CriterionT[]): [number, number
 
 export function updateCriteriaNames(criteriaData: CriteriaT): CriteriaT {
 		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(criteriaData.criteria);
+        console.log('+++++++++++++++++++++');
+        console.log(criteriaNames)
         criteriaData.evaluations.forEach((evaluation, i) => {
             evaluation.options.forEach((option, j) => {
+                console.log(criteriaData.evaluations[i].criteriaNames, criteriaData.evaluations[i].options[j].criteriaNames, criteriaData.evaluations[i].options[j].scores  )
                 criteriaData.evaluations[i].criteriaNames = criteriaNames
                 criteriaData.evaluations[i].options[j].criteriaNames = criteriaNames
                 criteriaData.evaluations[i].options[j].scores = updateScores(criteriaData.evaluations[i].options[j].scores, criteriaNames)
+                console.log(criteriaData.evaluations[i].criteriaNames, criteriaData.evaluations[i].options[j].criteriaNames, criteriaData.evaluations[i].options[j].scores  )
+                console.log('-------------------')
                 });
             });
         return criteriaData;
@@ -46,10 +51,13 @@ export function updateScores(scores: ScoreT[], criteriaNames: string[]): ScoreT[
     criteriaNames.forEach((criterionName) => {
         let ind = scores.findIndex((score) => score.name === criterionName)
         if (ind === -1) {  
-            scores = [...scores, {name: criterionName, value: 0}];
+            newScores = [...newScores, {name: criterionName, value: 0}];
+        }
+        else {
+            newScores = [...newScores, scores[ind]];
         }
     });
-    return scores
+    return newScores
 }
 
 export function computeFinalScores(criteriaData: CriteriaT): CriteriaT {

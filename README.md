@@ -1,3 +1,25 @@
+# TO DO
+	- [x] update score when changing importances
+	- [x] remove criterion
+    - [x] disable criterion importance before creation
+    - [x] correct reset scores (criteria are not deleted)
+	- multiple criteria
+	- save in localstoragebrowser
+	- format
+	- serve
+	- export
+	- import
+
+# FUTURE:
+	- promote
+	- sync to local database
+	- create users
+	- allow for shared criteria and options / colab
+	- allow for meta estimation (importance of user * range given by user)
+	- biometrics
+	- bayesian estimations
+
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).

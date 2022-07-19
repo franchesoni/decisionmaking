@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { CriterionT } from '../localStore';
 	import type { CriteriaT } from '../localStore';
-	import { updateCriteriaVariables } from '../utils';
+	import { updateCriteriaNames, updateCriteriaVariables } from '../utils';
 
 	import Criterion from './Criterion.svelte';
 	import Evaluation from './Evaluation.svelte';
@@ -41,6 +41,12 @@
 		return criteriaData;
 	}
 
+	function removeCriterion(criteriaData: CriteriaT): CriteriaT {
+		criteriaData.criteria = criteriaData.criteria.slice(0, -1);
+		criteriaData = updateCriteriaNames(criteriaData);
+		return criteriaData
+	}
+
 	function addEvaluation(criteriaData: CriteriaT): [CriteriaT, number] {
 		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(criteriaData.criteria);
 		let newEvaluation = {
@@ -55,7 +61,7 @@
 	}
 
 	function removeEvaluation(criteriaData: CriteriaT): [CriteriaT, number] {
-		criteriaData.evaluations = criteriaData.evaluations.splice(0, -1);
+		criteriaData.evaluations = criteriaData.evaluations.slice(0, -1);
 		return [criteriaData, criteriaData.evaluations.length - 1];
 	}
 </script>
@@ -77,6 +83,13 @@
 		}}
 	>
 		Create criterion
+	</button>
+	<button
+		on:click={() => {
+			criteriaData = removeCriterion(criteriaData);
+		}}
+	>
+		Remove criterion
 	</button>
 
 	<h3>Evaluations:</h3>
