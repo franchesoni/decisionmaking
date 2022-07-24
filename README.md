@@ -28,7 +28,10 @@
                 - change name, description
             - score for each option
             - some plots
-	- serve
+	- [x] serve
+    - remove evaluation
+    - persist scores
+    - reset button
 	- export
 	- import
     - prohibit name repetition

@@ -6,39 +6,42 @@ import { localStore } from './localStore.js'
 import { browser } from "$app/env";
 
 export const myCriteria: CriteriaT = {
-    "name": "Example criteria",
+    "name": "Example criteria: football players",
         "description": "This is an example of what you could do",
         "evaluations": [
             {
-                "name": "Example evaluation",
+                "name": "Comparison between most famous",
                 "description": "This is an example of what you evaluate",
                 "options": [
                     {
-                        "name": "Option 1",
+                        "name": "Messi",
                         "description": "Am I the best one?",
-                        "criteriaNames": ["Kind", "Fun"],
+                        "criteriaNames": ["Ability", "Speed", "Strength"],
                         "finalScore": 0,
                         "scores": [
-                            { "name": "Kind", "value": 5 },
-                            { "name": "Fun", "value": 2 }
+                            { "name": "Ability", "value": 5 },
+                            { "name": "Speed", "value": 4 },
+                            { "name": "Strength", "value": 2 }
                         ]
                     },
                     {
-                        "name": "Option 2",
+                        "name": "Bolt",
                         "description": "The best are the humblest",
-                        "criteriaNames": ["Kind", "Fun"],
+                        "criteriaNames": ["Ability", "Speed", "Strength"],
                         "finalScore": 0,
                         "scores": [
-                            { "name": "Kind", "value": 3 },
-                            { "name": "Fun", "value": 4 }
+                            { "name": "Ability", "value": 2 },
+                            { "name": "Speed", "value": 5 },
+                            { "name": "Strength", "value": 3 }
                         ]
                     }
                 ],
-                "criteriaNames": ["Kind", "Fun"],
+                "criteriaNames": ["Ability", "Speed", "Strength"],
             }],
         "criteria": [
-            { "name": "Kind", "importance": 3, "description": "How kind are you?"},
-            { "name": "Fun", "importance": 4, "description": "How fun are you?"}
+            { "name": "Ability", "importance": 4, "description": "How kind are you?"},
+            { "name": "Speed", "importance": 4, "description": "How fun are you?"}
+            { "name": "Strength", "importance": 3, "description": "How fun are you?"}
         ],
         "criteriaSum": -1,
     }

@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center bg-primary pt-16">
+<div class="flex flex-col items-center bg-primary p-16">
 <article class="prose">
 <h1>Rational-Subjective Decision Making</h1>
 
@@ -20,6 +20,13 @@
         <li>evaluate your choices under these criteria</li>
     </ol>
 <li>Finally, look at the aggregate scores!</li>
-</article>
 
+
+
+<h2>Feedback</h2>
+
+Please feel free to <a class="link" href="mailto:marchesoniacland@gmail.com">send feedback</a>. I am open to contributors.
+
+</article>
 </div>
+
