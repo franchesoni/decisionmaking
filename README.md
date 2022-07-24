@@ -5,7 +5,7 @@
     - [x] correct reset scores (criteria are not deleted)
 	- [x] multiple criteria
 	- [x] save in localstoragebrowser
-	- format
+	- [x] format
         - tailwind
         - initial page:
             - different criteria (name, little description)
@@ -41,6 +41,8 @@
 	- allow for meta estimation (importance of user * range given by user)
 	- biometrics
 	- bayesian estimations
+    - make more efficient:
+        - surgical updates
 
 
 # create-svelte

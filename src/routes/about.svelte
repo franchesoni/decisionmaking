@@ -1,3 +1,5 @@
+<div class="flex flex-col items-center bg-primary pt-16">
+<article class="prose">
 <h1>Rational-Subjective Decision Making</h1>
 
 <h2>Mission</h2>
@@ -8,10 +10,16 @@
 
 <h2>Explanation</h2>
 
-<p>
-This app brings some rationality into subjective decision making.
-Decision making implies choosing the best option from a list of options.
-Your first guess can be improved by looking at the options at different angles.
-To make better choices, you should define some criteria, and evaluate your choices under these criteria.
-Then you will be able to see what your criteria implies in terms of choices and viceversa.
-</p>
+    <ul>
+<li>We aim to add rationality into decision making.</li>
+<li>Decision making implies choosing the best option from a list of options.</li>
+<li>A first guess can be improved upon by looking at the options at different angles.</li>
+<li>To make better choices, 
+    <ol>
+        <li>define some criteria</li>
+        <li>evaluate your choices under these criteria</li>
+    </ol>
+<li>Finally, look at the aggregate scores!</li>
+</article>
+
+</div>

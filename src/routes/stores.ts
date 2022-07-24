@@ -2,8 +2,8 @@ import { writable } from 'svelte/store';
 import type { CriteriaT } from './localStore.js'
 import type { DataT } from './localStore.js'
 
-import { localStore } from './localStore.js'
-import { browser } from "$app/env";
+// import { localStore } from './localStore.js'
+// import { browser } from "$app/env";
 
 export const myCriteria: CriteriaT = {
     "name": "Example criteria",
@@ -21,8 +21,7 @@ export const myCriteria: CriteriaT = {
                         "scores": [
                             { "name": "Kind", "value": 5 },
                             { "name": "Fun", "value": 2 }
-                        ],
-                        "creating": false,
+                        ]
                     },
                     {
                         "name": "Option 2",
@@ -32,24 +31,21 @@ export const myCriteria: CriteriaT = {
                         "scores": [
                             { "name": "Kind", "value": 3 },
                             { "name": "Fun", "value": 4 }
-                        ],
-                        "creating": false,
+                        ]
                     }
                 ],
-                "creating": false,
                 "criteriaNames": ["Kind", "Fun"],
             }],
         "criteria": [
-            { "name": "Kind", "importance": 3, "description": "How kind are you?", "creating":false },
-            { "name": "Fun", "importance": 4, "description": "How fun are you?", "creating":false }
+            { "name": "Kind", "importance": 3, "description": "How kind are you?"},
+            { "name": "Fun", "importance": 4, "description": "How fun are you?"}
         ],
         "criteriaSum": -1,
-        "creating":false,
     }
 export const initialData: DataT = [
     myCriteria
 ]
 
-export const data = browser ? localStore('rationalsubjectivedecisionmaking', initialData) : writable(initialData)
-// export const data = writable(initialData)
+// export const data = browser ? localStore('rationalsubjectivedecisionmaking', initialData) : writable(initialData)
+export const data = writable(initialData)
 // export const data = writable(myCriteria)

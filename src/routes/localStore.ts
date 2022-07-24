@@ -11,14 +11,12 @@ export type OptionT = {
   "criteriaNames": string[],
   "scores": ScoreT[],
   "finalScore": number,
-  "creating": boolean,
 }
 
 export type EvaluationT = {
   "name": string,
   "description": string,
   "options": OptionT[],
-  "creating": boolean,
   "criteriaNames": string[],
 }
 
@@ -26,7 +24,6 @@ export type CriterionT = {
   "name": string,
   "importance": number;
   "description": string,
-  "creating": boolean,
 }
 
 export type CriteriaT = {
@@ -35,7 +32,6 @@ export type CriteriaT = {
   "evaluations": EvaluationT[],
   "criteria": CriterionT[],
   "criteriaSum": number,
-  "creating": boolean,
 }
 
 // export type DataT = {[key: number]: CriteriaT}
