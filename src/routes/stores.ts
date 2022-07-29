@@ -40,7 +40,7 @@ export const myCriteria: CriteriaT = {
             }],
         "criteria": [
             { "name": "Ability", "importance": 4, "description": "How kind are you?"},
-            { "name": "Speed", "importance": 4, "description": "How fun are you?"}
+            { "name": "Speed", "importance": 4, "description": "How fun are you?"},
             { "name": "Strength", "importance": 3, "description": "How fun are you?"}
         ],
         "criteriaSum": -1,

@@ -29,8 +29,9 @@
             - score for each option
             - some plots
 	- [x] serve
-    - remove evaluation
-    - persist scores
+    - [x] remove evaluation
+    - [x] persist scores
+    - [x] back button
     - reset button
 	- export
 	- import
@@ -40,6 +41,7 @@
 	- promote
 	- sync to local database
 	- create users
+    - unify and correct remove functions
 	- allow for shared criteria and options / colab
 	- allow for meta estimation (importance of user * range given by user)
 	- biometrics

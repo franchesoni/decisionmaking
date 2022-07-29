@@ -34,7 +34,7 @@
 <!-- <Evaluation evaluationData={$data[0].evaluations[0]}/> -->
 
 <div class="flex flex-col items-center mx-auto">
-	<div class="card-body">
+	<div class="card-body rounded-box bg-secondary ">
 		{#if Object.keys($data).length > 0}
 			{#each $data as criteriaData, i}
 				<div class="indicator my-1 mx-auto">
@@ -56,7 +56,7 @@
 			on:click={() => {
 				$data = addCriteria($data);
 			}}
-			class="btn">+</button
+			class="btn bg-primary">+</button
 		>
 	</div>
 </div>

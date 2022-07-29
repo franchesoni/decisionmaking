@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TiArrowLeft from 'svelte-icons/ti/TiArrowLeft.svelte'
 	import { data } from '../../stores.js';
 	import type { CriterionT } from '../../localStore';
 	import type { CriteriaT } from '../../localStore';
@@ -38,14 +39,18 @@
 		return [criteriaData, criteriaData.evaluations.length - 1];
 	}
 
-	function removeEvaluation(criteriaData: CriteriaT): [CriteriaT, number] {
-		criteriaData.evaluations = criteriaData.evaluations.slice(0, -1);
-		return [criteriaData, criteriaData.evaluations.length - 1];
+	function removeEvaluation(criteriaData: CriteriaT, ind:number): CriteriaT {
+		criteriaData.evaluations = criteriaData.evaluations.slice(0, ind).concat(criteriaData.evaluations.slice(ind+1));
+		return criteriaData
 	}
+
 </script>
 
 <div class="card items-center p-6 bg-primary">
-	<div class="card-title">
+	<div class="card-title items-start">
+		<a href='/' class="btn">
+			<TiArrowLeft/>
+		</a>
 		<input class="input" type="text" placeholder="Criteria name" bind:value={$data[criteriaInd].name} />
 	</div>
 
@@ -61,9 +66,21 @@
 			<div class="card-title">Evaluations</div>
 			<div class="card-body">
 				{#each criteriaData.evaluations as evaluation, i}
-					<a href="/components/{criteriaInd}/{i}/EvaluationIndex">
-						<EvaluationPreview evaluationData={$data[criteriaInd].evaluations[i]} />
-					</a>
+
+					<div class="indicator my-4">
+						<div class="indicator-item pt-4 pr-4">
+							<button
+								class="btn btn-sm bg-error"
+								on:click={() => {
+									$data[criteriaInd] = removeEvaluation($data[criteriaInd], i);
+								}}>-</button
+							>
+						</div>
+
+						<a href="/components/{criteriaInd}/{i}/EvaluationIndex">
+							<EvaluationPreview evaluationData={$data[criteriaInd].evaluations[i]} />
+						</a>
+					</div>
 				{/each}
 			</div>
 			<div class="card-actions">

@@ -9,6 +9,7 @@
 		<ul class="menu menu-horizontal p-0">
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About</a></li>
+			<!-- <li><a href="/data">Data</a></li> -->
 		</ul>
 	</div>
 </div>

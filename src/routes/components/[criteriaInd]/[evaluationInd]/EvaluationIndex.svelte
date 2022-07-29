@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TiArrowLeft from 'svelte-icons/ti/TiArrowLeft.svelte'
 	import { data } from '../../../stores.js';
 	import Option from './Option.svelte';
 	import { page } from '$app/stores';
@@ -34,6 +35,9 @@
 
 <div class="card items-center p-2 bg-secondary">
 	<div class="card-title">
+		<a href='/components/{criteriaInd}/CriteriaIndex' class="btn">
+			<TiArrowLeft/>
+		</a>
 		<input class="input" type="text" bind:value={evaluationData.name} />
 	</div>
 
