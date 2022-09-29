@@ -1,63 +1,78 @@
 <script lang="ts">
 	import { data } from './stores.js';
-	import type { DataT } from './localStore';
-	import CriteriaPreview from './components/[criteriaInd]/CriteriaPreview.svelte';
-	// import Evaluation from './components/Evaluation.svelte';
-	// let selectedCriteriaId: number;
+	import Option from './components/Option.svelte';
+	import CriteriaList from './components/CriteriaList.svelte';
 
-	function addCriteria(data: DataT): DataT {
-		let newCriteria = {
+	import type { DataT, CriterionT } from './localStore';
+	import { updateCriteriaVariables } from './utils';
+
+
+	$: if (
+		$data.criteria.map((criterion: CriterionT) => {
+			criterion.importance;
+		}).length > 0
+	) {
+		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables($data.criteria);
+		$data.criteriaSum = criteriaSum;
+	}
+
+	const removeOption = (ind: number) => {
+		if (ind === -1) {
+			$data.options = $data.options.slice(0, -1);
+		} else
+			$data.options = $data.options
+				.slice(0, ind)
+				.concat($data.options.slice(ind + 1));
+	};
+	const addOption = () => {
+		let newOption = {
 			name: '',
 			description: '',
-			evaluations: [],
-			criteria: [],
-			criteriaSum: 0,
-			creating: true
+			criteriaNames: $data.criteriaNames,
+			finalScore: 0,
+			scores: $data.criteriaNames.map((name : string) => {
+				return {
+					name: name,
+					value: 0
+				};
+			})
 		};
-		data = [...data, newCriteria];
-		return data;
-	}
+		$data.options = [...$data.options, newOption];
+	};
 
-
-	function removeCriteria(data: DataT, ind: number): DataT {
-		if (ind === -1) {
-			data = data.slice(0, -1);
-		} else {
-			data = data
-				.slice(0, ind)
-				.concat(data.slice(ind + 1));
-		}
-		return data;
-	}
 </script>
 
-<!-- <Evaluation evaluationData={$data[0].evaluations[0]}/> -->
 
-<div class="flex flex-col items-center mx-auto">
-	<div class="card-body rounded-box bg-secondary ">
-		{#if Object.keys($data).length > 0}
-			{#each $data as criteriaData, i}
-				<div class="indicator my-1 mx-auto">
-					<div class="indicator-item ">
+<div class="card items-center p-2 bg-secondary">
+		<div class="card-actions">
+		<div class="flex flex-col">
+			{#each $data.options as option, i}
+				<div class="indicator my-4">
+					<div class="indicator-item pt-4 pr-4">
 						<button
-							class="btn btn-circle btn-sm bg-error"
+							class="btn btn-sm bg-error"
 							on:click={() => {
-								$data = removeCriteria($data, i);
+								removeOption(i);
 							}}>-</button
 						>
 					</div>
-					<a href="/components/{i}/CriteriaIndex">
-						<CriteriaPreview {criteriaData} />
-					</a>
+					<Option bind:optionData={$data.options[i]} />
 				</div>
 			{/each}
-		{/if}
-		<button
-			on:click={() => {
-				$data = addCriteria($data);
-			}}
-			class="btn bg-primary">+</button
-		>
+			<button class="btn bg-primary" on:click={addOption}>+</button>
+		</div>
 	</div>
 </div>
-<!-- <pre>{JSON.stringify($data, null, 2)}</pre> -->
+
+<div class="card items-center p-6 bg-primary">
+	<div class="card-body">
+		<!-- <TextAreaAutosize bind:value={$data[criteriaInd].description} minRows={1} maxRows={10} />
+		<div class="divider" /> -->
+
+		<div class="card p-2 bg-secondary">
+		<CriteriaList bind:data={$data}/>
+		</div>
+
+	</div>
+</div>
+

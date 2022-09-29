@@ -1,16 +1,12 @@
 <script lang="ts">
-	import { data } from '../../stores.js';
-	import type { CriterionT, CriteriaT } from '../../localStore';
-	import { computeFinalScores, updateCriteriaNames } from '../../utils';
-	import TextAreaAutosize from '../TextAreaAutosize.svelte';
+	import { data } from '../stores.js';
+	import type { CriterionT } from '../localStore';
+	import { computeFinalScores, updateCriteriaNames } from '../utils';
 	const minImportance = 1;
 	const maxImportance = 10;
 	const editable = true;
 	export let updateCurrentCriteriaNames: () => void;
 	export let criterionData: CriterionT;
-	// export let name : string;
-	// export let importance: number;
-	// export let description: string;
 </script>
 
 <div class="card bg-primary card-compact">
@@ -26,7 +22,6 @@
 		/>
 	</div>
 	<div class="card-body bg-inherit">
-		<!-- <TextAreaAutosize bind:value={criterionData.description} minRows={1} maxRows={10} /> -->
 		<label>
 			<input
 				type="range"

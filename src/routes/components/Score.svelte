@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { data } from '../../../stores.js';
-	import type { ScoreT } from '../../../localStore';
-	import { computeFinalScores } from '../../../utils';
+	import { data } from '../stores.js';
+	import type { ScoreT } from '../localStore';
+	import { computeFinalScores } from '../utils';
 	const minValue = 1;
 	const maxValue = 100;
 	export let editable = true;

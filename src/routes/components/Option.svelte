@@ -1,7 +1,7 @@
 <script lang="ts">
 	// import { onMount } from 'svelte';
 	// import type { ScoreT } from './../localStore.js';
-	import type { OptionT } from '../../../localStore.js';
+	import type { OptionT } from '../localStore.js';
 	import Score from './Score.svelte';
 
 	export let optionData: OptionT;

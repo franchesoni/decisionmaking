@@ -13,29 +13,19 @@ export type OptionT = {
   "finalScore": number,
 }
 
-export type EvaluationT = {
-  "name": string,
-  "description": string,
-  "options": OptionT[],
-  "criteriaNames": string[],
-}
-
 export type CriterionT = {
   "name": string,
   "importance": number;
   "description": string,
 }
 
-export type CriteriaT = {
-  "name": string,
-  "description": string,
-  "evaluations": EvaluationT[],
+export type DataT = {
+  "options": OptionT[],
+  "criteriaNames": string[],
   "criteria": CriterionT[],
   "criteriaSum": number,
 }
 
-// export type DataT = {[key: number]: CriteriaT}
-export type DataT = CriteriaT[]
 
 export const localStore = (key: string, initial: DataT) => {                 // receives the key of the local storage and an initial value
 
