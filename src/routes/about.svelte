@@ -7,10 +7,9 @@
     <li>define what is "better" (your criteria)</li>
     <li>evaluate your options under these criteria</li>
     <li>look at the scores!</li>
+</ol>
 
-<h2>Feedback</h2>
-
-Please feel free to <a class="link" href="mailto:marchesoniacland@gmail.com">send feedback</a>. I am open to contributors.
+<p>What is the app missing? Please <a class="link" href="mailto:yiya.startup@gmail.com">send feedback</a>.</p>
 
 </article>
 </div>
