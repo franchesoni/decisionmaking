@@ -7,7 +7,6 @@ export type ScoreT = {
 
 export type OptionT = {
   "name": string,
-  "description": string,
   "criteriaNames": string[],
   "scores": ScoreT[],
   "finalScore": number,
@@ -16,7 +15,6 @@ export type OptionT = {
 export type CriterionT = {
   "name": string,
   "importance": number;
-  "description": string,
 }
 
 export type DataT = {

@@ -4,10 +4,7 @@
 	import { computeFinalScores } from '../utils';
 	const minValue = 1;
 	const maxValue = 100;
-	export let editable = true;
 	export let scoreData: ScoreT;
-	// export let name = "";
-	// export let value = 0;
 </script>
 
 <div class="card px-1">
@@ -19,7 +16,6 @@
 		<input
 			class="range"
 			type="range"
-			disabled={!editable}
 			bind:value={scoreData.value}
 			min={minValue}
 			max={maxValue}

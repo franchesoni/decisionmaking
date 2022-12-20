@@ -1,19 +1,8 @@
 <script lang="ts">
-	// import { onMount } from 'svelte';
-	// import type { ScoreT } from './../localStore.js';
 	import type { OptionT } from '../localStore.js';
 	import Score from './Score.svelte';
 
 	export let optionData: OptionT;
-	// export let name = "";
-	// export let description = "";
-	// export let creating = true;
-	// export let criteriaNames: string[] = [];
-	// export let scores: ScoreT[] = [];
-
-	// onMount(() => {
-	// 	optionData.scores = resetScores(optionData.criteriaNames);
-	// });
 </script>
 
 <div class="flex">

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { data } from '../stores.js';
 	import type { CriterionT } from '../localStore';
-	import { computeFinalScores, updateCriteriaNames } from '../utils';
+	import { computeFinalScores, updateCriteriaNamesInOptions } from '../utils';
 	const minImportance = 1;
 	const maxImportance = 10;
 	const editable = true;
-	export let updateCurrentCriteriaNames: () => void;
+	export let updateCurrentCriteriaNames: () => void;  // placeholder
 	export let criterionData: CriterionT;
 </script>
 

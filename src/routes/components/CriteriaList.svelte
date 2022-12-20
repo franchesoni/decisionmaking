@@ -1,22 +1,12 @@
 <script lang="ts">
 	import type { DataT, CriterionT } from '../localStore';
-	import { updateCriteriaNames, updateCriteriaVariables } from '../utils';
-
+	import { updateCriteriaNamesInOptions, getCriteriaNames } from '../utils';
 	import Criterion from './Criterion.svelte';
 
 	export let data: DataT;
 
-	$: if (
-		data.criteria.map((criterion: CriterionT) => {
-			criterion.importance;
-		}).length > 0
-	) {
-		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(data.criteria);
-		criteriaSum = criteriaSum;
-	}
 
 	function addCriterion(data: DataT): DataT {
-		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(data.criteria);
 		let newCriterion = {
 			name: '',
 			description: '',
@@ -24,7 +14,8 @@
 			creating: true
 		};
 		data.criteria = [...data.criteria, newCriterion];
-		data.criteriaNames = criteriaNames;
+		data.criteriaNames = [...data.criteriaNames, newCriterion.name]
+		data = updateCriteriaNamesInOptions(data);
 		return data;
 	}
 
@@ -36,8 +27,7 @@
 				.slice(0, ind)
 				.concat(data.criteria.slice(ind + 1));
 		}
-
-		data = updateCriteriaNames(data);
+		data = updateCriteriaNamesInOptions(data);
 		return data;
 	}
 </script>
@@ -57,14 +47,12 @@
 				</div>
 				<Criterion
 					updateCurrentCriteriaNames={() => {
-						data = updateCriteriaNames(data);
+						data = updateCriteriaNamesInOptions(data);
 					}}
 					bind:criterionData={data.criteria[i]}
 				/>
 			</div>
 		{/each}
-    <!-- </div>
-    <div class="card-actions">  -->
 		<button
 			class="btn bg-primary"
 			on:click={() => {

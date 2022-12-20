@@ -32,6 +32,9 @@
     - [x] remove evaluation
     - [x] persist scores
     - [x] back button
+    - [] debug:
+        - when deleting criteria with no option and creating a new option we obtain an insconsistent result
+        - resizing (make score responsive)
     - reset button
 	- export
 	- import

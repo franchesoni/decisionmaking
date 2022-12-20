@@ -2,33 +2,19 @@ import type { ScoreT } from './localStore'
 import type { DataT } from './localStore'
 import type { CriterionT } from './localStore'
 
-export function resetScores(criteriaNames: string[]): ScoreT[] {
-    // completely reset scores putting value on 0, useful when creating anew
-    let scores: ScoreT[] = [];
-    criteriaNames.forEach((criterionName) => {
-        let newScore = {
-            name: criterionName,
-            value: 0
-        };
-        scores = [...scores, newScore];
-    });
-    return scores
-}
 
-export	function updateCriteriaVariables(criteria: CriterionT[]): [number, number, string[]] {
-		let criteriaSum = 0;
-		let nCriteria = 0;
+
+export	function getCriteriaNames(criteria: CriterionT[]): string[] {
 		let criteriaNames: string[] = [];
 		criteria.forEach((criterion) => {
-			criteriaSum += criterion.importance;
-			nCriteria += 1;
 			criteriaNames = [...criteriaNames, criterion.name];
 		});
-		return [criteriaSum, nCriteria, criteriaNames];
+		return criteriaNames
 	}
 
 export function updateScores(scores: ScoreT[], criteriaNames: string[]): ScoreT[] {
-    // only add / delete scores 
+    // only add / delete scores, return newScores with nonexistent scores set to 0
+    // should be run every time criteria names change
     let newScores: ScoreT[] = [];
     criteriaNames.forEach((criterionName) => {
         let ind = scores.findIndex((score) => score.name === criterionName)
@@ -43,12 +29,15 @@ export function updateScores(scores: ScoreT[], criteriaNames: string[]): ScoreT[
 }
 
 export function computeFinalScores(data: DataT): DataT {
-    let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(data.criteria);
     let importances = data.criteria.map((criterion) => (criterion.importance));
-    let weights = importances.map((importance) => (importance / criteriaSum));
+    let importanceSum = 0
+    data.criteria.forEach((criterion) => {
+        importanceSum += criterion.importance
+    })
+    let weights = importances.map((importance) => (importance / importanceSum));
     data.options.forEach((option, j) => {
         let finalScore = 0;
-        criteriaNames.forEach((criterionName, k) => {
+        data.criteriaNames.forEach((criterionName, k) => {
             finalScore += weights[k] * data.options[j].scores[k].value;
         })
         data.options[j].finalScore = finalScore
@@ -56,8 +45,9 @@ export function computeFinalScores(data: DataT): DataT {
     return data
 }
 
-export function updateCriteriaNames(data: DataT): DataT {
-		let [criteriaSum, nCriteria, criteriaNames] = updateCriteriaVariables(data.criteria);
+
+export function updateCriteriaNamesInOptions(data: DataT): DataT {
+		let criteriaNames = getCriteriaNames(data.criteria);
         data.options.forEach((option, j) => {
             data.criteriaNames = criteriaNames
             data.options[j].criteriaNames = criteriaNames
