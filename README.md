@@ -35,10 +35,12 @@
     - [] debug:
         - when deleting criteria with no option and creating a new option we obtain an insconsistent result
         - resizing (make score responsive)
+        - write code that clears browser storage if encountered an error
     - reset button
 	- export
 	- import
     - prohibit name repetition
+    - add one plot
 
 # FUTURE:
 	- promote
