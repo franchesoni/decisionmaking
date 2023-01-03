@@ -43,6 +43,10 @@
     - add one plot
 
 # FUTURE:
+    - rank list after some inactivity   
+	- make accesible to everyone (screen readers, keyboard, etc.)
+	- SEO
+	- provide context before asking for access to the storage
 	- promote
 	- sync to local database
 	- create users
