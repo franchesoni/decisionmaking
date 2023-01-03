@@ -33,7 +33,7 @@
 </script>
 
 <div class="card items-center p-2 bg-secondary">
-	<div class="card-title">Criteria</div>
+	<div class="card-title">Importances</div>
 	<div class="card-body flex-col">
 		{#each data.criteria as criterion, i}
 			<div class="indicator my-4">

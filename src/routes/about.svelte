@@ -4,7 +4,7 @@
 
 <p>Add rationality when choosing the best option from a list!</p>
 <ol>
-    <li>define what is "better" (your criteria)</li>
+    <li>define what is "better" (the importance of each criterion)</li>
     <li>evaluate your options under these criteria</li>
     <li>look at the individual scores!</li>
 </ol>
